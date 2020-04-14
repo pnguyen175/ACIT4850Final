@@ -33,7 +33,7 @@ pipeline {
                 expression { params.TARGET == 'run' }
             } 
             steps {
-                echo 'done123123'
+                sh 'python main.py'
             }
         }
         stage("Package") {
