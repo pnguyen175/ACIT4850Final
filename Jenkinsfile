@@ -15,7 +15,7 @@ pipeline {
                 script {
                     def files = findFiles glob: "*.py"
                     for (int i = 0; i < files.size(); ++i) {
-                        sh "pylint-fail-under --fail_under 5 ${files[i]}" 
+                        sh "pylint-fail-under --fail_under 3 ${files[i]}" 
                     }
                 }
             }
