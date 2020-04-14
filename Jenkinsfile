@@ -25,9 +25,9 @@ pipeline {
                 sh "wc -l *.py "
             }
         }
-        stage("Run") {
+        // stage("Run") {
 
-        }
+        // }
         stage("Package") {
             steps {
                 sh "zip package.zip *.py"
