@@ -25,9 +25,18 @@ pipeline {
                 sh "wc -l *.py "
             }
         }
-        // stage("Run") {
-
-        // }
+        stage("Run") {
+            input {
+                parameters {
+                    string (name: 'TARGET', defaultValue: 'run', description: '')
+                }
+                if param.name == 'TARGET' {
+                    steps {
+                        echo "working"
+                    }
+                }
+            }
+        }
         stage("Package") {
             steps {
                 sh "zip package.zip *.py"
