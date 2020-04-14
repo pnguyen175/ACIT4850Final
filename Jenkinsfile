@@ -2,6 +2,9 @@
 
 pipeline {
     agent any
+        parameters {
+            string (name: 'TARGET', defaultValue: 'run', description: '')
+        }
     stages {
         stage("Build") {
             steps {
@@ -26,15 +29,11 @@ pipeline {
             }
         }
         stage("Run") {
-            input {
-                parameters {
-                    string (name: 'TARGET', defaultValue: 'run', description: '')
-                }
-                if param.name == 'TARGET' {
-                    steps {
-                        echo "working"
-                    }
-                }
+            when {
+                expression { params.TARGET == 'run' }
+            } 
+            steps {
+                echo 'done'
             }
         }
         stage("Package") {
