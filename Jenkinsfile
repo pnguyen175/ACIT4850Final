@@ -22,7 +22,7 @@ pipeline {
         }
         stage("Code Quantity") {
             steps {
-                sh "wc -l *.py"
+                sh "wc -l .py "
             }
         }
     }
