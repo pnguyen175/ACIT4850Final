@@ -15,14 +15,23 @@ pipeline {
                 script {
                     def files = findFiles glob: "*.py"
                     for (int i = 0; i < files.size(); ++i) {
-                        sh "pylint-fail-under --fail_under 3 ${files[i]}" 
+                        sh "pylint-fail-under --fail_under 5 ${files[i]}" 
                     }
                 }
             }
         }
         stage("Code Quantity") {
             steps {
-                sh "wc -l .py "
+                sh "wc -l *.py "
+            }
+        }
+        stage("Run") {
+
+        }
+        stage("Package") {
+            steps {
+                sh "zip package.zip *.py"
+                archiveArtifacts artifacts: "package.zip", fingerprint: true
             }
         }
     }
